@@ -18,53 +18,44 @@ paymentForm.include({
             return;
         }
 
-        this.tilopayData ??= {};
+        this.tilopayData ??= {}; // Initialize the tilopayData object if not already done.
 
-        if (flow === 'token') {
-            return;
-        } else if (this.tilopayData[paymentOptionId]) {
+        if (flow === 'token') return; // Token-based payment doesn't require inline form setup.
+
+        if (this.tilopayData[paymentOptionId]) {  // Reuse existing data if already loaded.
             this._setPaymentFlow('direct');
-            loadJS(this.tilopayData[paymentOptionId]['acceptJSUrl']);
+            await loadJS(this.tilopayData[paymentOptionId].acceptJSUrl);
             return;
         }
 
         this._setPaymentFlow('direct');
-
+        
+        // Extract the Tilopay form data
         const radio = document.querySelector('input[name="o_payment_radio"]:checked');
         const inlineForm = this._getInlineForm(radio);
         const tilopayForm = inlineForm.querySelector('[name="o_tilopay_form"]');
-        this.tilopayData[paymentOptionId] = JSON.parse(tilopayForm.dataset['tilopayInlineFormValues']);
-        const tilopayJson = this.tilopayData[paymentOptionId];
 
-        let acceptJSUrl = 'https://app.tilopay.com/sdk/v2/sdk_tpay.min.js';
-        this.tilopayData[paymentOptionId].acceptJSUrl = acceptJSUrl;
+        if (!tilopayForm) {
+            console.error("Tilopay form not found. Make sure your template is rendering correctly.");
+            return;
+        }
+
+        // Parse inline form values
+        try {
+            this.tilopayData[paymentOptionId] = JSON.parse(tilopayForm.dataset['tilopayInlineFormValues']);
+            this.tilopayData[paymentOptionId].form = tilopayForm; // Store the form element for later use.
+            this.tilopayData[paymentOptionId].acceptJSUrl = 'https://app.tilopay.com/sdk/v2/sdk_tpay.min.js';
+        } catch (error) {
+            console.error("Error parsing Tilopay form data:", error);
+            return;
+        }
 
         try {
-            await loadJS(acceptJSUrl);
-            await this.Tilopay(tilopayJson);
+            await loadJS(this.tilopayData[paymentOptionId].acceptJSUrl);
+            await this.Tilopay(this.tilopayData[paymentOptionId]);
         } catch (error) {
-            console.error("Failed to load Tilopay Script:", error);
+            console.error("Failed to load Tilopay SDK:", error);
         }
-    },
-
-    /**
-     * Trigger the payment processing.
-     *
-     * @private
-     */
-    async _initiatePaymentFlow(providerCode, paymentOptionId, paymentMethodCode, flow) {
-        if (providerCode !== 'tilopay' || flow === 'token') {
-            this._super(...arguments);
-            return;
-        }
-
-        const inputs = Object.values(this._tilopayGetInlineFormInputs(paymentOptionId, paymentMethodCode));
-        if (!inputs.every(element => element.reportValidity())) {
-            this._enableButton();
-            return;
-        }
-
-        await this._super(...arguments);
     },
 
     /**
@@ -78,15 +69,15 @@ paymentForm.include({
             return;
         }
 
-        this.TilopayUpdateOptions({
-            returnData: JSON.stringify({
-                reference: processingValues.reference,
-                amount: processingValues.amount,
-                currency: processingValues.currency_id,
-            })
-        });
-
         try {
+            this.TilopayUpdateOptions({
+                returnData: JSON.stringify({
+                    reference: processingValues.reference,
+                    amount: processingValues.amount,
+                    currency: processingValues.currency_id,
+                })
+            });
+
             const payment = await this.tiloMakePay();
             this._tilopayHandleResponse(payment, processingValues);
         } catch (error) {
@@ -101,9 +92,11 @@ paymentForm.include({
      * @private
      */
     _tilopayHandleResponse(response, processingValues) {
-        if (response.message !== "Success" && response.message !== "") {
-            this._displayErrorDialog(_t("Payment Tilopay processing failed"), response.message);
+        if (!response || response.message !== "Success") {
+            const errorMsg = response?.message || _t("Unknown error occurred.");
+            this._displayErrorDialog(_t("Payment Tilopay processing failed"), errorMsg);
             this._enableButton();
+            return;
         }
     },
 
@@ -113,27 +106,16 @@ paymentForm.include({
      * @private
      */
     _tilopayGetInlineFormInputs(paymentOptionId, paymentMethodCode) {
-        const form = this.tilopayData[paymentOptionId]['form'];
+        const form = this.tilopayData[paymentOptionId]?.form;
+        if (!form) {
+            console.error("Tilopay form not initialized. Please check your form rendering.");
+            return {};
+        }
+        
         return {
             card: form.querySelector('#tlpy_cc_number'),
             expiration: form.querySelector('#tlpy_cc_expiration_date'),
             cvv: form.querySelector('#tlpy_cvv'),
-        };
-    },
-
-    /**
-     * Prepare payment details for Tilopay.
-     *
-     * @private
-     */
-    _tilopayGetPaymentDetails(paymentOptionId, paymentMethodCode) {
-        const inputs = this._tilopayGetInlineFormInputs(paymentOptionId, paymentMethodCode);
-        return {
-            cardData: {
-                cardNumber: inputs.card.value.replace(/ /g, ''),
-                expiration: inputs.expiration.value,
-                cardCode: inputs.cvv.value,
-            },
         };
     },
 
@@ -158,6 +140,8 @@ paymentForm.include({
      */
     async tilopayChargeMethods(methods) {
         const methodSelect = document.getElementById("tlpy_payment_method");
+        methodSelect.innerHTML = ''; // Clear previous options if any.
+        
         methods.forEach(method => {
             const option = document.createElement("option");
             option.value = method.id;
@@ -181,6 +165,10 @@ paymentForm.include({
      * @private
      */
     async TilopayUpdateOptions(values) {
-        await Tilopay.updateOptions(values);
+        try {
+            await Tilopay.updateOptions(values);
+        } catch (error) {
+            console.error("Error updating Tilopay options:", error);
+        }
     },
 });
