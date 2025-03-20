@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="form" inherit_id="payment.payment_tokens_list" name="Payment Form">
+        <xpath expr="//div[contains(@class, 'card')]"  position="inside">
+            <div id="responseTilopay"/>
+        </xpath>
+    </template>
+</odoo>

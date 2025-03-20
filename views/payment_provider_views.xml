@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--TILOPAY PAYMENT PROVIDER-->
+    <record id="acquirer_form" model="ir.ui.view">
+        <field name="name">Tilopay Provider Form</field>
+        <field name="model">payment.acquirer</field>
+        <field name="inherit_id" ref="payment.acquirer_form"/>
+        <field name="arch" type="xml">
+            <group name="acquirer" position="inside">
+                <group attrs="{'invisible': [('provider', '!=', 'tilopay')]}">
+                    <field name="tilopay_api_key" attrs="{'required': [('provider', '=', 'tilopay'), ('state', '!=', 'disabled')]}"/>
+                    <field name="tilopay_api_user" widget="password" attrs="{'required': [('provider', '=', 'tilopay'), ('state', '!=', 'disabled')]}"/>
+                    <field name="tilopay_api_password" widget="password" attrs="{'required': [('provider', '=', 'tilopay'), ('state', '!=', 'disabled')]}"/>
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>

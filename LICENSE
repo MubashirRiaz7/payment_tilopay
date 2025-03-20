@@ -1,0 +1,20 @@
+ABL Solutions Proprietary License v1.0
+This software and associated files (the "Software") may only be used (executed, modified, executed after modifications)
+if you have purchased a valid license from ABL Solutions, typically via Odoo Apps,
+or if you have received a written agreement from ABL Solutions (see the COPYRIGHT file).
+
+You may develop Odoo modules that use the Software as a library (typically by depending on it,
+importing it, and using its resources), but without copying any source code or material from the Software.
+You may distribute those modules under the license of your choice,
+provided that this license is compatible with the terms of the ABL Solutions Proprietary License (for example: LGPL, MIT, or proprietary licenses similar to this one).
+
+It is forbidden to publish, distribute, sublicense, or sell copies of the Software or modified copies of the Software.
+
+The above copyright notice and this permission notice must be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO, THE WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+HOWEVER, ABL SOLUTIONS COMMITS TO OFFERING TECHNICAL SUPPORT AND SOLUTIONS TO ISSUES THAT MAY ARISE DURING USE OF THE SOFTWARE,
+ACCORDING TO THE TERMS OF THE LICENSE. THE AUTHORS OR COPYRIGHT HOLDERS SHALL NOT BE LIABLE FOR ANY CLAIM,
+DAMAGES, OR OTHER LIABILITY ARISING FROM THE SOFTWARE OR THE INCORRECT OPERATION OF THE SOFTWARE,
+UNLESS SPECIFIC SUPPORT HAS BEEN AGREED WITH ABL SOLUTIONS.

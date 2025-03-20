@@ -1,0 +1,196 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* payment_tilopay
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-22 05:16+0000\n"
+"PO-Revision-Date: 2024-09-22 05:16+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: payment_tilopay
+#: model_terms:ir.ui.view,arch_db:payment_tilopay.inline_form
+msgid ""
+"<select name=\"tlpy_payment_method\" id=\"tlpy_payment_method\" class=\"form-control\">\n"
+"                            <option value=\"\">Select payment method</option>\n"
+"                        </select>"
+msgstr ""
+"<select name=\"tlpy_payment_method\" id=\"tlpy_payment_method\" class=\"form-control\">\n"
+"                            <option value=\"\">Seleccione el Método de Pago</option>\n"
+"                        </select>"
+
+#. module: payment_tilopay
+#: model_terms:ir.ui.view,arch_db:payment_tilopay.inline_form
+msgid "CVV"
+msgstr ""
+
+#. module: payment_tilopay
+#: model_terms:ir.ui.view,arch_db:payment_tilopay.inline_form
+msgid "Card Number"
+msgstr "Número de Tarjeta"
+
+#. module: payment_tilopay
+#: model:ir.model.fields,field_description:payment_tilopay.field_payment_provider__code
+msgid "Code"
+msgstr "Código"
+
+#. module: payment_tilopay
+#: model:ir.model,name:payment_tilopay.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: payment_tilopay
+#: model_terms:ir.ui.view,arch_db:payment_tilopay.inline_form
+msgid "Expiration"
+msgstr "Expiración"
+
+#. module: payment_tilopay
+#: model:ir.model.fields,field_description:payment_tilopay.field_res_partner__first_name
+#: model:ir.model.fields,field_description:payment_tilopay.field_res_users__first_name
+#: model_terms:ir.ui.view,arch_db:payment_tilopay.address
+msgid "First Name"
+msgstr "Primer Nombre"
+
+#. module: payment_tilopay
+#: model:ir.model.fields,help:payment_tilopay.field_res_partner__first_name
+#: model:ir.model.fields,help:payment_tilopay.field_res_partner__last_name
+#: model:ir.model.fields,help:payment_tilopay.field_res_users__first_name
+#: model:ir.model.fields,help:payment_tilopay.field_res_users__last_name
+msgid "First Name of Customer/Supplier"
+msgstr "Nombre"
+
+#. module: payment_tilopay
+#: model:ir.model.fields,field_description:payment_tilopay.field_res_partner__last_name
+#: model:ir.model.fields,field_description:payment_tilopay.field_res_users__last_name
+#: model_terms:ir.ui.view,arch_db:payment_tilopay.address
+msgid "Last Name"
+msgstr "Apellido"
+
+#. module: payment_tilopay
+#. odoo-python
+#: code:addons/payment_tilopay/models/payment_transaction.py:0
+#, python-format
+msgid "Missing value for txn_id (%(txn_id)s)."
+msgstr ""
+
+#. module: payment_tilopay
+#. odoo-python
+#: code:addons/payment_tilopay/models/payment_transaction.py:0
+#, python-format
+msgid "No transaction found matching reference %s."
+msgstr ""
+
+#. module: payment_tilopay
+#: model_terms:ir.ui.view,arch_db:payment_tilopay.inline_form
+msgid "Payment Method"
+msgstr "Método de Pago"
+
+#. module: payment_tilopay
+#: model:ir.model,name:payment_tilopay.model_payment_provider
+msgid "Payment Provider"
+msgstr "Proveedor de pago"
+
+#. module: payment_tilopay
+#. odoo-javascript
+#: code:addons/payment_tilopay/static/src/js/payment_form.js:0
+#, python-format
+msgid "Payment Tilopay processing failed"
+msgstr "Error en el procesamiento del pago Tilopay"
+
+#. module: payment_tilopay
+#: model:ir.model,name:payment_tilopay.model_payment_transaction
+msgid "Payment Transaction"
+msgstr "Transacción de pago"
+
+#. module: payment_tilopay
+#. odoo-python
+#: code:addons/payment_tilopay/models/payment_transaction.py:0
+#, python-format
+msgid "Received data with invalid payment status: %s"
+msgstr ""
+
+#. module: payment_tilopay
+#: model_terms:payment.acquirer,auth_msg:payment_tilopay.payment_provider_tilopay
+msgid "Se autorizó su pago."
+msgstr ""
+
+#. module: payment_tilopay
+#: model_terms:payment.acquirer,cancel_msg:payment_tilopay.payment_provider_tilopay
+msgid "Se canceló su pago."
+msgstr ""
+
+#. module: payment_tilopay
+#: model_terms:payment.acquirer,done_msg:payment_tilopay.payment_provider_tilopay
+msgid "Su pago se proceso con éxito."
+msgstr ""
+
+#. module: payment_tilopay
+#: model_terms:payment.acquirer,pending_msg:payment_tilopay.payment_provider_tilopay
+msgid "Su pago se procesó con éxito pero está en espera de aprobación."
+msgstr ""
+
+#. module: payment_tilopay
+#: model_terms:ir.ui.view,arch_db:payment_tilopay.address
+msgid "Surname"
+msgstr "Segundo Apellido"
+
+#. module: payment_tilopay
+#: model:ir.model.fields,help:payment_tilopay.field_res_partner__surname
+#: model:ir.model.fields,help:payment_tilopay.field_res_users__surname
+msgid "Surname of Customer/Supplier"
+msgstr "Segundo Apellido"
+
+#. module: payment_tilopay
+#: model:ir.model.fields,field_description:payment_tilopay.field_res_partner__surname
+#: model:ir.model.fields,field_description:payment_tilopay.field_res_users__surname
+msgid "Surnmae"
+msgstr "Segundo Apellido"
+
+#. module: payment_tilopay
+#: model:ir.model.fields,help:payment_tilopay.field_payment_provider__tilopay_api_key
+msgid "The Api Key of tilopay account"
+msgstr "El Api Key de la cuenta de Tilopay"
+
+#. module: payment_tilopay
+#. odoo-python
+#: code:addons/payment_tilopay/models/payment_transaction.py:0
+#, python-format
+msgid "The customer left the payment page."
+msgstr ""
+
+#. module: payment_tilopay
+#: model:ir.model.fields,help:payment_tilopay.field_payment_provider__code
+msgid "The technical code of this payment provider."
+msgstr "El código técnico de este proveedor de pagos."
+
+#. module: payment_tilopay
+#: model:ir.model.fields,field_description:payment_tilopay.field_payment_provider__tilopay_api_key
+msgid "TiloPay API Key"
+msgstr ""
+
+#. module: payment_tilopay
+#: model:ir.model.fields.selection,name:payment_tilopay.selection__payment_provider__code__tilopay
+msgid "Tilopay"
+msgstr ""
+
+#. module: payment_tilopay
+#: model:ir.model.fields,field_description:payment_tilopay.field_payment_provider__tilopay_api_password
+msgid "Tilopay API Password"
+msgstr ""
+
+#. module: payment_tilopay
+#: model:ir.model.fields,field_description:payment_tilopay.field_payment_provider__tilopay_api_user
+msgid "Tilopay API User"
+msgstr ""
+
+#. module: payment_tilopay
+#: model:payment.acquirer,name:payment_tilopay.payment_provider_tilopay
+msgid "Tilopay Payment Gateway"
+msgstr ""

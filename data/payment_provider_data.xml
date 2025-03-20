@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!--PAYMENT PROVIDER TILOPAY-->
+    <record id="payment_tilopay.payment_provider_tilopay" model="payment.acquirer">
+        <field name="name">Tilopay Payment Gateway</field>
+        <field name="provider">tilopay</field>
+        <field name="image_128" type="base64" file="payment_tilopay/static/img/TiloPayIcon.png"/>
+    </record>
+</odoo>

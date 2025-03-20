@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="payment_method_tilopay" model="payment.acquirer">
+        <field name="name">Tilopay</field>
+        <field name="provider">tilopay</field>
+        <field name="sequence">1</field>
+        <field name="image_128" type="base64" file="payment_tilopay/static/img/LogoTilopay.png"/>
+    </record>
+</odoo>

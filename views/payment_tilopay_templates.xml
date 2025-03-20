@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--TILOPAY INLINE FORM-->
+    <template id="inline_form">
+        <div name="o_tilopay_form"
+             t-att-data-tilopay-inline-form-values="provider_sudo._tilopay_get_inline_form_values()"
+        >
+            <div class="payFormTilopay">
+                <div class="row">
+                    <div class="col-sm-4 mb-3">
+                        <label for="tlpy_payment_method" class="col-form-label">Payment Method</label>
+                        <select name="tlpy_payment_method" id="tlpy_payment_method" class="form-control">
+                            <option value="">Select payment method</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="tlpy_cc_number" class="col-form-label">Card Number</label>
+                    <input type="text" id="tlpy_cc_number" class="form-control" name="tlpy_cc_number" value="" maxlength="19"></input>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 mb-3">
+                        <label for="tlpy_cc_expiration_date">Expiration</label>
+                        <div class="input-group">
+                            <input type="text" name="tlpy_cc_expiration_date" id="tlpy_cc_expiration_date" value="" class="form-control"></input>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 mb-3">
+                        <label for="tlpy_cvv">CVV</label>
+                        <input type="text" id="tlpy_cvv" name="tlpy_cvv" value=""  class="form-control"></input>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+</odoo>

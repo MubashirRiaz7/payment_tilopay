@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="address" inherit_id="website_sale.address" name="Address Management">
+        <!-- Insert the new block before the target div -->
+        <xpath expr="//div[contains(@class, 'div_name')]" position="before">
+            <div t-attf-class="#{error.get('name') and 'o_has_error'} div_name col-lg-12 mb-2">
+                <div t-attf-class="#{error.get('first_name') and 'o_has_error'} col-lg-6 mb-2" id="first_name">
+                    <label t-attf-class="col-form-label #{mode[1] == 'shipping' and 'label-optional' or ''}" for="first_name">
+                        First Name
+                    </label>
+                    <input type="text" name="first_name" t-attf-class="form-control #{error.get('first_name') and 'is-invalid' or ''}" t-att-value="'first_name' in checkout and checkout['first_name']"/>
+                </div>
+                <div t-attf-class="#{error.get('last_name') and 'o_has_error'} col-lg-6 mb-2" id="last_name">
+                    <label t-attf-class="col-form-label #{mode[1] == 'shipping' and 'label-optional' or ''}" for="last_name">
+                        Last Name
+                    </label>
+                    <input type="text" name="last_name" t-attf-class="form-control #{error.get('last_name') and 'is-invalid' or ''}" t-att-value="'last_name' in checkout and checkout['last_name']"/>
+                </div>
+                <div t-attf-class="#{error.get('surname') and 'o_has_error'} col-lg-6 mb-2" id="surname">
+                    <label t-attf-class="col-form-label #{mode[1] == 'shipping' and 'label-optional' or ''}" for="surname">
+                        Surname
+                    </label>
+                    <input type="text" name="surname" t-attf-class="form-control #{error.get('surname') and 'is-invalid' or ''}" t-att-value="'surname' in checkout and checkout['surname']"/>
+                </div>
+            </div>
+        </xpath>
+
+        <!-- Modify the attributes of the target div -->
+        <xpath expr="//div[contains(@class, 'div_name')]" position="attributes">
+            <attribute name="style">display:none !important;</attribute>
+        </xpath>
+
+        <!-- Replace the input field for 'name' -->
+        <xpath expr="//input[@name='name']" position="replace">
+            <input type="text" name="name" t-attf-class="form-control #{error.get('name') and 'is-invalid' or ''}" value="*" />
+        </xpath>
+    </template>
+</odoo>
