@@ -4,40 +4,38 @@
     <template id="inline_form">
         <div name="o_tilopay_form"
              t-att-data-tilopay-inline-form-values="provider_sudo._tilopay_get_inline_form_values()"
-             class="o_tilopay_form_container">
-            <div class="payFormTilopay">
-                
-                <!-- Payment Method Selector -->
-                <div class="row mb-3">
-                    <div class="col-sm-6">
-                        <label for="tlpy_payment_method" class="col-form-label">Payment Method</label>
-                        <select name="tlpy_payment_method" id="tlpy_payment_method" class="form-control">
-                            <option value="" selected="selected" disabled="disabled">Select payment method</option>
-                        </select>
-                    </div>
-                </div>
+             class="o_tilopay_form_container payFormTilopay">
 
-                <!-- Card Details Section -->
-                <div class="row mb-3">
-                    <div class="col-sm-6">
-                        <label for="tlpy_cc_number" class="col-form-label">Card Number</label>
-                        <input type="text" id="tlpy_cc_number" class="form-control"
-                               name="tlpy_cc_number" maxlength="19"
-                               placeholder="•••• •••• •••• ••••" required="required"/>
-                    </div>
+            <!-- Payment Method Selector -->
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <label for="tlpy_payment_method" class="col-form-label">Payment Method</label>
+                    <select name="tlpy_payment_method" id="tlpy_payment_method" class="form-control">
+                        <option value="" selected="selected" disabled="disabled">Select payment method</option>
+                    </select>
                 </div>
+            </div>
 
-                <div class="row mb-3">
-                    <div class="col-sm-3">
-                        <label for="tlpy_cc_expiration_date" class="col-form-label">Expiration Date</label>
-                        <input type="text" name="tlpy_cc_expiration_date" id="tlpy_cc_expiration_date"
-                               class="form-control" placeholder="MM/YY" required="required"/>
-                    </div>
-                    <div class="col-sm-3">
-                        <label for="tlpy_cvv" class="col-form-label">CVV</label>
-                        <input type="text" id="tlpy_cvv" name="tlpy_cvv" class="form-control"
-                               maxlength="4" placeholder="123" required="required"/>
-                    </div>
+            <!-- Card Details Section -->
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <label for="tlpy_cc_number" class="col-form-label">Card Number</label>
+                    <input type="text" id="tlpy_cc_number" class="form-control"
+                           name="tlpy_cc_number" maxlength="19"
+                           placeholder="•••• •••• •••• ••••" required="required"/>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-sm-3">
+                    <label for="tlpy_cc_expiration_date" class="col-form-label">Expiration Date</label>
+                    <input type="text" name="tlpy_cc_expiration_date" id="tlpy_cc_expiration_date"
+                           class="form-control" placeholder="MM/YY" required="required"/>
+                </div>
+                <div class="col-sm-3">
+                    <label for="tlpy_cvv" class="col-form-label">CVV</label>
+                    <input type="text" id="tlpy_cvv" name="tlpy_cvv" class="form-control"
+                           maxlength="4" placeholder="123" required="required"/>
                 </div>
             </div>
         </div>

@@ -10,12 +10,12 @@
 
 {
     'name': 'Tilopay Payment Gateway',
-    'version': '14.0.0.1',  # Adjusted for Odoo 14 compatibility
+    'version': '14.0.0.1',
     'summary': "Integrate Tilopay Payment Gateway with Odoo E-commerce.",
     'description': 'This module integrates the Tilopay SDK with Odoo for handling Credit Card and Debit Card payments.',
     'category': 'Accounting/Payment Acquirers',
     'author': 'ABL Solutions',
-    'license': 'OPL-1',  # Using Odoo Proprietary License (change if needed)
+    'license': 'OPL-1',
     'price': 35.0,
     'currency': 'USD',
     'support': 'infoablsolutions24@gmail.com',
